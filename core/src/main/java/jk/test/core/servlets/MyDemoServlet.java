@@ -23,8 +23,8 @@ public class MyDemoServlet extends SlingSafeMethodsServlet {
 			IOException {
 		final Resource resource = req.getResource();
 		resp.setContentType("text/plain");
-		resp.getWriter().write(
-				"Title = " + resource.getResourceType()
-						+ " This is fetched from MyDemoServlet?");
+		resp.getWriter()
+				.write("This message is invoked by servlet which is registered by resourceType:--> resourceType is "
+						+ resource.getResourceType());
 	}
 }
