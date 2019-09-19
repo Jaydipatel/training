@@ -24,6 +24,7 @@ public class MyDemoServlet extends SlingSafeMethodsServlet {
 		final Resource resource = req.getResource();
 		resp.setContentType("text/plain");
 		resp.getWriter().write(
-				"Title = " + resource.getResourceType() + " hello kem chho?");
+				"Title = " + resource.getResourceType()
+						+ " This is fetched from MyDemoServlet?");
 	}
 }
