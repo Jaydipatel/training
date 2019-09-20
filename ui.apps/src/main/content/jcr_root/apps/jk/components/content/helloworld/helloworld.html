@@ -14,6 +14,7 @@
     limitations under the License.
 */-->
 <p data-sly-test="${properties.text}">Text property: ${properties.text}</p>
+<h2 style="color:palevioletred;font-size:2vw">You will see how to call service in sling model in aem, go to in crxde and check look for "/content/jk/en/test/jcr:content" node and delete property" Welcome(Boolean Property)" and refresh this page again and you will see that property back in the node, This is happening because sling model is calling "MyService" and invoking its "updateMynode" method which puts this "welcome" property back into JCR.</h2>
 
 <pre data-sly-use.hello="jk.test.core.models.HelloWorldModel">
 HelloWorldModel says:

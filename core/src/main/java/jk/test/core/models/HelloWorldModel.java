@@ -17,9 +17,11 @@ package jk.test.core.models;
 
 import static org.apache.sling.api.resource.ResourceResolver.PROPERTY_RESOURCE_TYPE;
 
-import javax.annotation.PostConstruct;
+import javax.inject.Inject;
 import javax.jcr.Node;
 import javax.jcr.RepositoryException;
+
+import jk.test.core.MyService;
 
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
@@ -30,6 +32,8 @@ import org.apache.sling.models.annotations.injectorspecific.OSGiService;
 import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 import org.apache.sling.settings.SlingSettingsService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.day.cq.wcm.api.Page;
 import com.day.cq.wcm.api.PageManager;
@@ -37,6 +41,8 @@ import com.day.cq.wcm.api.PageManager;
 @Model(adaptables = Resource.class)
 public class HelloWorldModel {
 
+	@Inject
+	private MyService myServ;
 	@ValueMapValue(name = PROPERTY_RESOURCE_TYPE, injectionStrategy = InjectionStrategy.OPTIONAL)
 	@Default(values = "No resourceType")
 	protected String resourceType;
@@ -48,24 +54,23 @@ public class HelloWorldModel {
 	@SlingObject
 	private ResourceResolver resourceResolver;
 
-	private String message;
+	final Logger log = LoggerFactory.getLogger(this.getClass());
 
-	@PostConstruct
-	protected void init() throws RepositoryException {
+	public String getMessage() throws RepositoryException {
+		log.info("****ggggg-inside postConstruct****");
 		PageManager pageManager = resourceResolver.adaptTo(PageManager.class);
 		Page currentPage = pageManager.getContainingPage(currentResource);
 		Node node = currentResource.adaptTo(Node.class);
 		String nodePath = node.getPath().toString();
-
-		message = "\tHello World!\n" + "\tThis is instance: "
+		log.info("****ggggg-before service****");
+		myServ.updateMynode();
+		log.info("****ggggg-after service****");
+		return "\tHello World!\n" + "\tThis is instance: "
 				+ settings.getSlingId() + "\n" + "\tResource type is: "
 				+ resourceType + "\n" + "\tNodePath type is: " + nodePath
 				+ "\n" + "\tCurrent page is: "
 				+ (currentPage != null ? currentPage.getPath() : "") + "\n";
-	}
 
-	public String getMessage() {
-		return message;
 	}
 
 }
