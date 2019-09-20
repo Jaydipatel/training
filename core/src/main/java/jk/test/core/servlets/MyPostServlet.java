@@ -49,6 +49,7 @@ public class MyPostServlet extends SlingAllMethodsServlet {
 	protected void doPost(SlingHttpServletRequest request,
 			SlingHttpServletResponse response) {
 		log.info("***MyPostServlet is invoked****");
+		// Setting responseType, This is needed for ajax resonse
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("application/json");
 
