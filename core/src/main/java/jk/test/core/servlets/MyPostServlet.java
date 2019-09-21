@@ -17,13 +17,9 @@ import org.apache.sling.servlets.annotations.SlingServletPaths;
 import org.json.JSONObject;
 import org.osgi.service.component.annotations.Component;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 /**
- * @author Jaydeep Patel
- *
- *         SlingPostServlet Demo
+ * @author Jaydeep Patel------ HERE WE ARE SENDING RESPONSE BACK TO AJAX CALL AS
+ *         WELL AS CHANGING PROPERTY IN JCR SlingPostServlet Demo
  */
 
 @Component(service = Servlet.class)
@@ -36,19 +32,13 @@ public class MyPostServlet extends SlingAllMethodsServlet {
 	private static final long serialVersionUID = -159625176093879129L;
 
 	/**
-	 * Logger
-	 */
-	private static final Logger log = LoggerFactory
-			.getLogger(MyPostServlet.class);
-
-	/**
 	 * Overridden doPost() method which is invoked when an HTTP post request is
 	 * made
 	 */
 	@Override
 	protected void doPost(SlingHttpServletRequest request,
 			SlingHttpServletResponse response) {
-		log.info("***MyPostServlet is invoked****");
+
 		// Setting responseType, This is needed for ajax resonse
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("application/json");
@@ -66,12 +56,11 @@ public class MyPostServlet extends SlingAllMethodsServlet {
 			obj.put("firstname", firstName);
 			obj.put("lastname", lastName);
 			String jsonData = obj.toString();
-			log.info("***Servlet Invokmed*******22" + jsonData);
 
 			// Return the JSON formatted data
-			log.info("fffffffffffff" + jsonData);
+
 			response.getWriter().write(jsonData);
-			log.info("fffffffffffff" + "response senttttttt");
+
 			/**
 			 * Getting the instance of resource resolver from the request
 			 */
@@ -81,9 +70,7 @@ public class MyPostServlet extends SlingAllMethodsServlet {
 			 * Getting the resource object via path
 			 */
 			Resource resource = resourceResolver
-					.getResource("/content/jk/en/test/jcr:content");
-
-			log.info("Resource is at path {}", resource.getPath());
+					.getResource("/content/jk/en/jcr:content");
 
 			/**
 			 * Adapt the resource to javax.jcr.Node type
@@ -99,7 +86,7 @@ public class MyPostServlet extends SlingAllMethodsServlet {
 			/**
 			 * Setting a name property for this node
 			 */
-			node.setProperty("kakku", false);
+			node.setProperty("pooopu", false);
 
 			/**
 			 * Commit the changes to JCR
@@ -108,16 +95,13 @@ public class MyPostServlet extends SlingAllMethodsServlet {
 
 		} catch (RepositoryException e) {
 
-			log.error(e.getMessage(), e);
-
 			e.printStackTrace();
 
 		} catch (PersistenceException e) {
 
-			log.error(e.getMessage(), e);
-
 			e.printStackTrace();
 		} catch (Exception e) {
+
 			e.printStackTrace();
 		}
 	}

@@ -1,0 +1,12 @@
+<div data-sly-test.author="${!properties.text  || !properties.label && wcmmode.edit}">Please add Sling-Model Component</div>
+<div data-sly-test="${properties.text  && properties.label}" data-sly-use.hello="jk.test.core.models.MyTestModel">
+
+    <h2 style="color:darkslateblue"> whatever value you will put in dialog, you will get reverse of it as slingModel in backend "MytestModel" is changing the injected values of dialog properties.</h2>
+    <p style="color:darkslategrey"> your entry for TEXT : ${properties.text}</p>
+    <p style="color:darkslategrey"> your entry for Label: ${properties.label} </p>
+
+    <p style="color:darkolivegreen">Returned entry for TEXT from Sling-Model : ${hello.text}</p>
+    <p style="color:darkolivegreen"> Returned entry for Label from Sling-Model : ${hello.label}</p>
+
+
+</div>
