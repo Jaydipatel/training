@@ -141,5 +141,5 @@
     </jcr:content>
     <ajaxcall/>
     <sling-model/>
-    <nice/>
+    <service-call/>
 </jcr:root>

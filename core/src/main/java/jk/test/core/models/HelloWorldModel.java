@@ -21,8 +21,6 @@ import javax.annotation.PostConstruct;
 import javax.jcr.Node;
 import javax.jcr.RepositoryException;
 
-import jk.test.core.MyService;
-
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.models.annotations.Default;
@@ -35,6 +33,8 @@ import org.apache.sling.settings.SlingSettingsService;
 
 import com.day.cq.wcm.api.Page;
 import com.day.cq.wcm.api.PageManager;
+
+import jk.test.core.MyService;
 
 @Model(adaptables = Resource.class)
 public class HelloWorldModel {
@@ -68,10 +68,8 @@ public class HelloWorldModel {
 
 		myServ.updateMynode(currentResource);
 
-		message = "\tHello World!\n" + "\tThis is instance: "
-				+ settings.getSlingId() + "\n" + "\tResource type is: "
-				+ resourceType + "\n" + "\tNodePath type is: " + nodePath
-				+ "\n" + "\tCurrent page isss: "
+		message = "\tHello World!\n" + "\tThis is instance: " + settings.getSlingId() + "\n" + "\tResource type is: "
+				+ resourceType + "\n" + "\tNodePath type is: " + nodePath + "\n" + "\tCurrent page isss: "
 				+ (currentPage != null ? currentPage.getPath() : "") + "\n";
 	}
 

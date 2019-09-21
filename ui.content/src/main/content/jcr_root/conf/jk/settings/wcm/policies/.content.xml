@@ -32,7 +32,7 @@
                             mergeList="{Boolean}true"/>
                     </content-default>
                     <policy_1569032588061
-                        jcr:lastModified="{Date}2019-09-20T21:24:17.921-05:00"
+                        jcr:lastModified="{Date}2019-09-21T16:30:48.867-05:00"
                         jcr:lastModifiedBy="admin"
                         jcr:primaryType="nt:unstructured"
                         jcr:title="Plain Page policy"
@@ -49,6 +49,15 @@
                         components="[/libs/wcm/foundation/components/responsivegrid,/apps/acs-commons/components/content/column-control,group:jk]">
                         <jcr:content jcr:primaryType="nt:unstructured"/>
                     </policy_22941560841602>
+                    <policy_1569100882104
+                        jcr:lastModified="{Date}2019-09-21T16:23:28.482-05:00"
+                        jcr:lastModifiedBy="admin"
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="helllooo"
+                        sling:resourceType="wcm/core/components/policy/policy"
+                        components="[/libs/foundation/components/chart,/apps/acs-commons/components/content/definition-list,/libs/foundation/components/external,/apps/acs-commons/components/content/generic-text]">
+                        <jcr:content jcr:primaryType="nt:unstructured"/>
+                    </policy_1569100882104>
                 </responsivegrid>
             </components>
         </foundation>
