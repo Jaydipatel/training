@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="cq:Page">
+    <jcr:content
+        cq:lastModified="{Date}2019-09-21T09:58:48.900-05:00"
+        cq:lastModifiedBy="admin"
+        cq:template="/conf/jk/settings/wcm/templates/plain-page"
+        jcr:primaryType="cq:PageContent"
+        jcr:title="sling model"
+        sling:resourceType="jk/components/structure/page">
+        <root
+            jcr:lastModified="{Date}2019-09-19T20:30:50.162-05:00"
+            jcr:lastModifiedBy="admin"
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="wcm/foundation/components/responsivegrid">
+            <responsivegrid
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="wcm/foundation/components/responsivegrid">
+                <slingmodel
+                    jcr:created="{Date}2019-09-20T21:41:38.128-05:00"
+                    jcr:createdBy="admin"
+                    jcr:lastModified="{Date}2019-09-21T09:58:48.898-05:00"
+                    jcr:lastModifiedBy="admin"
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="jk/components/content/slingModel"
+                    label="JKLM"
+                    text="ABCD"/>
+            </responsivegrid>
+        </root>
+    </jcr:content>
+</jcr:root>
