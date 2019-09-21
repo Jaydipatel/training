@@ -2,11 +2,11 @@
 <jcr:root xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0"
     jcr:primaryType="cq:Template">
     <jcr:content
-        cq:lastModified="{Date}2019-09-20T21:32:31.511-05:00"
+        cq:lastModified="{Date}2019-09-20T21:26:59.838-05:00"
         cq:lastModifiedBy="admin"
-        cq:templateType="/conf/jk/settings/wcm/template-types/content-page"
-        jcr:description="Simple content page for jk"
+        cq:templateType="/conf/jk/settings/wcm/template-types/empty-page"
+        jcr:description="plain page "
         jcr:primaryType="cq:PageContent"
-        jcr:title="Content Page"
-        status="disabled"/>
+        jcr:title="Plain Page"
+        status="enabled"/>
 </jcr:root>
