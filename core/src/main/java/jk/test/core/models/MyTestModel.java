@@ -1,14 +1,16 @@
 package jk.test.core.models;
 
 import javax.inject.Inject;
+
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.Model;
+import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 
 @Model(adaptables = Resource.class)
 public class MyTestModel {
 
-	// @SlingObject
-	// private Resource currentResource;
+	@SlingObject
+	private Resource currentResource;
 	// @SlingObject
 	// private ResourceResolver resourceResolver;
 
@@ -43,5 +45,9 @@ public class MyTestModel {
 
 	public String getLabel() {
 		return new StringBuffer(label).reverse().toString();
+	}
+
+	public String getPath() {
+		return currentResource.getPath();
 	}
 }
