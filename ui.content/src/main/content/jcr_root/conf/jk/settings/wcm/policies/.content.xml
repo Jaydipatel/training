@@ -9,6 +9,8 @@
                 <responsivegrid jcr:primaryType="nt:unstructured">
                     <content-default
                         jcr:description="Policy for editable layout containers"
+                        jcr:lastModified="{Date}2019-09-20T21:22:48.661-05:00"
+                        jcr:lastModifiedBy="admin"
                         jcr:primaryType="nt:unstructured"
                         jcr:title="jk Default"
                         sling:resourceType="wcm/core/components/policy/policy"
@@ -29,6 +31,24 @@
                             jcr:primaryType="nt:unstructured"
                             mergeList="{Boolean}true"/>
                     </content-default>
+                    <policy_1569032588061
+                        jcr:lastModified="{Date}2019-09-20T21:24:17.921-05:00"
+                        jcr:lastModifiedBy="admin"
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Plain Page policy"
+                        sling:resourceType="wcm/core/components/policy/policy"
+                        components="group:jk">
+                        <jcr:content jcr:primaryType="nt:unstructured"/>
+                    </policy_1569032588061>
+                    <policy_22941560841602
+                        jcr:lastModified="{Date}2019-09-20T21:31:29.998-05:00"
+                        jcr:lastModifiedBy="admin"
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="SimpleTemplate Policy"
+                        sling:resourceType="wcm/core/components/policy/policy"
+                        components="[/libs/wcm/foundation/components/responsivegrid,/apps/acs-commons/components/content/column-control,group:jk]">
+                        <jcr:content jcr:primaryType="nt:unstructured"/>
+                    </policy_22941560841602>
                 </responsivegrid>
             </components>
         </foundation>
@@ -46,6 +66,9 @@
                     </form-container>
                 </container>
             </form>
+            <content jcr:primaryType="nt:unstructured">
+                <text jcr:primaryType="nt:unstructured"/>
+            </content>
         </components>
     </jk>
 </jcr:root>

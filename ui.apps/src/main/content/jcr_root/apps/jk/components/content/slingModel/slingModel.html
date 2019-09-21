@@ -1,0 +1,36 @@
+<div data-sly-test.author="${!properties.text  || !properties.label && wcmmode.edit}">Please add Sling-Model Component</div>
+<div data-sly-test="${!author}" data-sly-use.model1="jk.test.core.models.MyTestModel" data-sly-use.model2="jk.test.core.models.MyTestModel2">
+   <h2 style="color:darkslateblue">Sling Model with "@Model(adaptables = Resource.class)"</h2>
+    <h2 style="color:darkslateblue"> whatever value you will put in dialog, you will get reverse of it, as slingModel ("MytestModel" ) in backend is changing the injected values of dialog properties.</h2>
+    <p style="color:darkslategrey">your entry for TEXT : ${properties.text}</p>
+    <p style="color:darkslategrey">your entry for Label: ${properties.label} </p>
+
+    <p style="color:darkolivegreen">Returned entry for TEXT from Sling-Model : ${model1.text}</p>
+    <p style="color:darkolivegreen">Returned entry for Label from Sling-Model : ${model1.label}</p>
+    <p style="color:darkolivegreen">Path of Resource :${model1.path}</p> 
+    
+    <h2 style="color:darkslateblue">Sling Model with "@Model(adaptables = SlingHttpServletRequest.class)"</h2>
+    <pre style="color:darkolivegreen"> 1. Path of ResourcePage: ${model2.pagePath}
+        CODE IS BELOW:
+    ("@ScriptVariable(name = "currentPage")
+	Page page;
+
+	public String getPagePath() {
+		return page.getPath();
+	}")</pre> 
+    
+    
+    <pre style="color:darkolivegreen"> 2. Getting value of property "text" from dialog box : ${model2.text}
+    
+    CODE IS BELOW
+    
+    @ValueMapValue(name = "text", via = "resource", injectionStrategy = InjectionStrategy.REQUIRED)
+	String text;
+
+	public String getText() {
+		return text;
+	}
+    </pre>
+   
+
+</div>

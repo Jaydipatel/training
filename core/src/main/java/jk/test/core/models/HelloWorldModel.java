@@ -21,6 +21,8 @@ import javax.annotation.PostConstruct;
 import javax.jcr.Node;
 import javax.jcr.RepositoryException;
 
+import jk.test.core.MyService;
+
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.models.annotations.Default;
@@ -37,6 +39,9 @@ import com.day.cq.wcm.api.PageManager;
 @Model(adaptables = Resource.class)
 public class HelloWorldModel {
 
+	@OSGiService
+	private MyService myServ;
+
 	@ValueMapValue(name = PROPERTY_RESOURCE_TYPE, injectionStrategy = InjectionStrategy.OPTIONAL)
 	@Default(values = "No resourceType")
 	protected String resourceType;
@@ -50,6 +55,10 @@ public class HelloWorldModel {
 
 	private String message;
 
+	public String getMessage() {
+		return message;
+	}
+
 	@PostConstruct
 	protected void init() throws RepositoryException {
 		PageManager pageManager = resourceResolver.adaptTo(PageManager.class);
@@ -57,15 +66,13 @@ public class HelloWorldModel {
 		Node node = currentResource.adaptTo(Node.class);
 		String nodePath = node.getPath().toString();
 
+		myServ.updateMynode(currentResource);
+
 		message = "\tHello World!\n" + "\tThis is instance: "
 				+ settings.getSlingId() + "\n" + "\tResource type is: "
 				+ resourceType + "\n" + "\tNodePath type is: " + nodePath
-				+ "\n" + "\tCurrent page is: "
+				+ "\n" + "\tCurrent page isss: "
 				+ (currentPage != null ? currentPage.getPath() : "") + "\n";
-	}
-
-	public String getMessage() {
-		return message;
 	}
 
 }

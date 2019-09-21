@@ -9,6 +9,7 @@
         jcr:title="English"
         sling:resourceType="jk/components/structure/page"
         pageTitle="New Project"
+        pooopu="{Boolean}false"
         socialMedia="[facebook]">
         <root
             jcr:primaryType="nt:unstructured"
@@ -93,7 +94,8 @@
                 <helloworld
                     jcr:lastModifiedBy="admin"
                     jcr:primaryType="nt:unstructured"
-                    sling:resourceType="jk/components/content/helloworld"/>
+                    sling:resourceType="jk/components/content/helloworld"
+                    kuku="piku"/>
                 <container
                     jcr:primaryType="nt:unstructured"
                     sling:resourceType="jk/components/form/container"
@@ -137,4 +139,7 @@
             </responsivegrid>
         </root>
     </jcr:content>
+    <ajaxcall/>
+    <sling-model/>
+    <nice/>
 </jcr:root>
