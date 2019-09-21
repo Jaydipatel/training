@@ -20,12 +20,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <body>
 
-    <h2 style="color: maroon;font-size:3vw">Demo ofhow service is invoked by sling model in AEM</h2>
+    <h2 style="color: maroon;font-size:3vw">Demo of how service is invoked by sling model in AEM</h2>
 
 <div data-sly-use.hello="jk.test.core.models.HelloWorldModel">
-<h2 style="color:palevioletred;font-size:2vw">You will see how to call service in sling model in aem, go to in crxde and check look for "/content/jk/en/test/jcr:content" node and delete property" Welcome(Boolean Property)" and refresh this page again and you will see that property back in the node, This is happening because sling model is calling "MyService" and invoking its "updateMynode" method which puts this "welcome" property back into JCR.</h2>
+    <h2 style="color:palevioletred;font-size:2vw">You will see how to call service in sling model in aem, go to in crxde and check look for node "${currentPage.path}" and delete property "newProperty(Boolean Property)" and then refresh this page and you will see that property back in the node, This is happening because sling model is calling service, "MyService" and calling its "updateMynode" method which puts this property("newProperty") back into JCR.</h2>
+
 HelloWorldModel says:
-${hello.message}
+    
+    <pre>
+    ${hello.message}
+    </pre>
+
 </div>
 
 </body>
