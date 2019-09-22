@@ -11,7 +11,7 @@ import org.apache.sling.api.SlingHttpServletResponse;
 import org.apache.sling.api.resource.PersistenceException;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
-import org.apache.sling.api.servlets.SlingAllMethodsServlet;
+import org.apache.sling.api.servlets.SlingSafeMethodsServlet;
 import org.apache.sling.servlets.annotations.SlingServletPaths;
 import org.json.JSONObject;
 import org.osgi.service.component.annotations.Component;
@@ -23,7 +23,7 @@ import org.osgi.service.component.annotations.Component;
 
 @Component(service = Servlet.class)
 @SlingServletPaths("/bin/submitdata")
-public class MyPostServlet extends SlingAllMethodsServlet {
+public class MyPostServlet extends SlingSafeMethodsServlet {
 
 	/**
 	 * Generated serialVersionUID
@@ -31,10 +31,12 @@ public class MyPostServlet extends SlingAllMethodsServlet {
 	private static final long serialVersionUID = -159625176093879129L;
 
 	/**
-	 * Overridden doPost() method which is invoked when an HTTP post request is made
+	 * Overridden doPost() method which is invoked when an HTTP post request is
+	 * made
 	 */
 	@Override
-	protected void doPost(SlingHttpServletRequest request, SlingHttpServletResponse response) {
+	protected void doGet(SlingHttpServletRequest request,
+			SlingHttpServletResponse response) {
 
 		// Setting responseType, This is needed for ajax resonse
 		response.setCharacterEncoding("UTF-8");
@@ -42,8 +44,10 @@ public class MyPostServlet extends SlingAllMethodsServlet {
 
 		try {
 			String id = UUID.randomUUID().toString();
-			String firstName = request.getParameter("firstName") + " _newFirstName";
-			String lastName = request.getParameter("lastName") + " _newLastName";
+			String firstName = request.getParameter("firstName")
+					+ " _newFirstName";
+			String lastName = request.getParameter("lastName")
+					+ " _newLastName";
 
 			// Encode the submitted form data to JSON
 			JSONObject obj = new JSONObject();
@@ -64,7 +68,8 @@ public class MyPostServlet extends SlingAllMethodsServlet {
 			/**
 			 * Getting the resource object via path
 			 */
-			Resource resource = resourceResolver.getResource("/content/jk/en/jcr:content");
+			Resource resource = resourceResolver
+					.getResource("/content/jk/en/jcr:content");
 
 			/**
 			 * Adapt the resource to javax.jcr.Node type
@@ -72,8 +77,8 @@ public class MyPostServlet extends SlingAllMethodsServlet {
 			Node node = resource.adaptTo(Node.class);
 
 			/**
-			 * Create a new node with name and primary type and add it below the path
-			 * specified by the resource
+			 * Create a new node with name and primary type and add it below the
+			 * path specified by the resource
 			 */
 			// Node newNode = node.addNode("demoNode", "nt:unstructured");
 

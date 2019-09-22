@@ -35,7 +35,7 @@
                 var myLast = $('#LastName').val();
                 var claimId = createUUID();
                 $.ajax({
-                    type: "POST",
+                    type: "GET",
                     url: '/bin/submitdata',
                     data: 'firstName=' + myFirst + '&lastName=' + myLast,
                     success: function(data, textStatus, jqXHR) {

@@ -11,9 +11,10 @@ import org.apache.sling.api.resource.PersistenceException;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
 import org.osgi.service.component.annotations.Component;
+
 import com.day.cq.wcm.api.PageManager;
 
-import jk.test.core.MyService;
+import jk.test.core.services.MyService;
 
 @Component(service = MyService.class, immediate = true)
 public class MyServiceImpl implements MyService {
