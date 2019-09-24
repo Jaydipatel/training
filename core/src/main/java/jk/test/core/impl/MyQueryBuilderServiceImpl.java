@@ -79,24 +79,6 @@ public class MyQueryBuilderServiceImpl implements MyQueryBuilderService {
 
 			}
 
-			log.info("ffffff" + result.getResources().toString() + "dssfsdfsd");
-
-			// log.info("result.getTotalMatches() " + result.getTotalMatches()
-			// + "\n" + "  00000" + "\n" + "result.hasMore()"
-			// + result.hasMore() + "\n" + "result.getStartIndex()"
-			// + result.getStartIndex() + "\n"
-			// + "result.getResultPages().toString()"
-			// + result.getResultPages().toString() + "\n"
-			// + "result.getResources().toString()"
-			// + result.getResources().toString() + "\n"
-			// + "result.getQueryStatement().toString()"
-			// + result.getQueryStatement() + "\n"
-			// + "result.getPreviousPage().toString()"
-			// + result.getPreviousPage().toString() + "\n"
-			// + "result.getNodes().toString()"
-			// + result.getNodes().toString() + "\n"
-			// + "result.getNextPage().toString()"
-			// + result.getNextPage().toString());
 		} catch (LoginException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
