@@ -1,0 +1,8 @@
+<h1> I am a multifield component, Please edit my dialog box.</h1>
+<sly data-sly-use.listUse="${'/apps/atvi/global/utils/multifield/listCollection.js' @ multifieldName='items'}">
+
+
+<sly data-sly-list="${listUse}"> 
+						<ul style="color:purple">${item.properties.title},${item.properties.value},${item.properties.text}</ul>
+                    </sly>
+
