@@ -21,8 +21,6 @@ import javax.annotation.PostConstruct;
 import javax.jcr.Node;
 import javax.jcr.RepositoryException;
 
-import jk.test.core.MyService;
-
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.models.annotations.Default;
@@ -32,15 +30,23 @@ import org.apache.sling.models.annotations.injectorspecific.OSGiService;
 import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 import org.apache.sling.settings.SlingSettingsService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.day.cq.wcm.api.Page;
 import com.day.cq.wcm.api.PageManager;
+
+import jk.test.core.services.MyQueryBuilderService;
+import jk.test.core.services.MyService;
 
 @Model(adaptables = Resource.class)
 public class HelloWorldModel {
 
 	@OSGiService
 	private MyService myServ;
+
+	@OSGiService
+	MyQueryBuilderService myQuery;
 
 	@ValueMapValue(name = PROPERTY_RESOURCE_TYPE, injectionStrategy = InjectionStrategy.OPTIONAL)
 	@Default(values = "No resourceType")
@@ -54,6 +60,7 @@ public class HelloWorldModel {
 	private ResourceResolver resourceResolver;
 
 	private String message;
+	protected final Logger log = LoggerFactory.getLogger(this.getClass());
 
 	public String getMessage() {
 		return message;
@@ -61,18 +68,23 @@ public class HelloWorldModel {
 
 	@PostConstruct
 	protected void init() throws RepositoryException {
+		log.info("----inside1");
 		PageManager pageManager = resourceResolver.adaptTo(PageManager.class);
 		Page currentPage = pageManager.getContainingPage(currentResource);
 		Node node = currentResource.adaptTo(Node.class);
 		String nodePath = node.getPath().toString();
-
+		log.info("----inside2");
 		myServ.updateMynode(currentResource);
+		log.info("----inside3");
+		myQuery.allQueries();
+
+		log.info("----inside4");
 
 		message = "\tHello World!\n" + "\tThis is instance: "
 				+ settings.getSlingId() + "\n" + "\tResource type is: "
 				+ resourceType + "\n" + "\tNodePath type is: " + nodePath
 				+ "\n" + "\tCurrent page isss: "
-				+ (currentPage != null ? currentPage.getPath() : "") + "\n";
+				+ (currentPage != null ? currentPage.getPath() : "") + " "
+				+ myQuery.allQueries();
 	}
-
 }

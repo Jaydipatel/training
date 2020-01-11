@@ -11,8 +11,7 @@ import org.apache.sling.api.SlingHttpServletResponse;
 import org.apache.sling.api.resource.PersistenceException;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
-import org.apache.sling.api.servlets.SlingAllMethodsServlet;
-
+import org.apache.sling.api.servlets.SlingSafeMethodsServlet;
 import org.apache.sling.servlets.annotations.SlingServletPaths;
 import org.json.JSONObject;
 import org.osgi.service.component.annotations.Component;
@@ -24,7 +23,7 @@ import org.osgi.service.component.annotations.Component;
 
 @Component(service = Servlet.class)
 @SlingServletPaths("/bin/submitdata")
-public class MyPostServlet extends SlingAllMethodsServlet {
+public class MyPostServlet extends SlingSafeMethodsServlet {
 
 	/**
 	 * Generated serialVersionUID
@@ -36,7 +35,7 @@ public class MyPostServlet extends SlingAllMethodsServlet {
 	 * made
 	 */
 	@Override
-	protected void doPost(SlingHttpServletRequest request,
+	protected void doGet(SlingHttpServletRequest request,
 			SlingHttpServletResponse response) {
 
 		// Setting responseType, This is needed for ajax resonse
@@ -86,7 +85,7 @@ public class MyPostServlet extends SlingAllMethodsServlet {
 			/**
 			 * Setting a name property for this node
 			 */
-			node.setProperty("pooopu", false);
+			node.setProperty("hello", false);
 
 			/**
 			 * Commit the changes to JCR

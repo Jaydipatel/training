@@ -1,4 +1,5 @@
 <body>
+
     <h2 style="color:palevioletred">This is a demo of how Ajax call work in aem servlet.</h2>
     <h2>HTML Forms</h2>
 
@@ -12,7 +13,7 @@
         <input type="button" value="Submit" name="submit" id="submit">
     </form>
 
-    <h2 style="color:palevioletred">AJAX call to servlet, On hitting submit button it should give you alert message with success and will update form values with new ones.</h2>
+    <h2 style="color:red">AJAX call to servlet, On hitting submit button it should give you alert message with success and will update form values with new ones.</h2>
     <script>
         function createUUID() {
 
@@ -35,7 +36,7 @@
                 var myLast = $('#LastName').val();
                 var claimId = createUUID();
                 $.ajax({
-                    type: "POST",
+                    type: "GET",
                     url: '/bin/submitdata',
                     data: 'firstName=' + myFirst + '&lastName=' + myLast,
                     success: function(data, textStatus, jqXHR) {
