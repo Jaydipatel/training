@@ -1,7 +1,9 @@
 package jk.test.core.impl;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 import javax.jcr.Node;
@@ -35,9 +37,9 @@ public class MyQueryBuilderServiceImpl implements MyQueryBuilderService {
 	protected final Logger log = LoggerFactory.getLogger(this.getClass());
 
 	@Override
-	public void allQueries() {
+	public List<String> allQueries() {
 		log.info("******insideQuery----");
-
+		List<String> al = new ArrayList<String>();
 		Map<String, Object> param = new HashMap<String, Object>();
 		param.put(ResourceResolverFactory.SUBSERVICE, "data");
 		ResourceResolver resolver = null;
@@ -49,9 +51,9 @@ public class MyQueryBuilderServiceImpl implements MyQueryBuilderService {
 			// create query description as hash map (simplest way, same as form
 			// post)
 
-			map.put("path", "/content/jk");
+			map.put("path", "/content/catalogs/we-retail/en");
 			map.put("type", "cq:Page");
-			map.put("p.limit", "20"); // same as query.setHitsPerPage(20)
+			map.put("p.limit", "-1"); // same as query.setHitsPerPage(20)
 			// below
 
 			Query query = builder.createQuery(PredicateGroup.create(map),
@@ -65,11 +67,24 @@ public class MyQueryBuilderServiceImpl implements MyQueryBuilderService {
 				Resource rp = itr.next();
 
 				log.info("Resource  path  is "
-						+ rp.getChildren().iterator().next().getValueMap()
-								.get("cq:template", String.class)
+						+ rp.getChildren().iterator().next().getPath()
+
 						+ "****************\n");
+				al.add(rp.getChildren().iterator().next().getPath().toString()
+						+ "\n");
 
 			}
+
+			// while (itr.hasNext()) {
+			//
+			// Resource rp = itr.next();
+			//
+			// log.info("Resource  path  is "
+			// + rp.getChildren().iterator().next().getValueMap()
+			// .get("cq:template", String.class)
+			// + "****************\n");
+			//
+			// }
 
 			Iterator<Node> nodeItr = result.getNodes();
 			while (nodeItr.hasNext()) {
@@ -86,6 +101,6 @@ public class MyQueryBuilderServiceImpl implements MyQueryBuilderService {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
+		return al;
 	}
 }

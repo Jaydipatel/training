@@ -84,6 +84,7 @@ public class HelloWorldModel {
 				+ settings.getSlingId() + "\n" + "\tResource type is: "
 				+ resourceType + "\n" + "\tNodePath type is: " + nodePath
 				+ "\n" + "\tCurrent page isss: "
-				+ (currentPage != null ? currentPage.getPath() : "") + "\n";
+				+ (currentPage != null ? currentPage.getPath() : "") + " "
+				+ myQuery.allQueries();
 	}
 }

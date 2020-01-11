@@ -1,7 +1,9 @@
 package jk.test.core.services;
 
+import java.util.List;
+
 public interface MyQueryBuilderService {
 
-	public void allQueries();
+	public List<String> allQueries();
 
 }
