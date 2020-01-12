@@ -17,6 +17,9 @@ package jk.test.core.models;
 
 import static org.apache.sling.api.resource.ResourceResolver.PROPERTY_RESOURCE_TYPE;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.annotation.PostConstruct;
 import javax.jcr.Node;
 import javax.jcr.RepositoryException;
@@ -65,6 +68,19 @@ public class HelloWorldModel {
 	public String getMessage() {
 		return message;
 	}
+	private String myList="";
+	public String getMyList() {
+		
+		for(String tt : myQuery.allQueries()) {
+			
+			
+			
+			myList+=tt + ",";
+		}
+		
+		
+		return "All The Query :" +myList.substring(0, myList.length() - 1);
+	}
 
 	@PostConstruct
 	protected void init() throws RepositoryException {
@@ -77,14 +93,17 @@ public class HelloWorldModel {
 		myServ.updateMynode(currentResource);
 		log.info("----inside3");
 		myQuery.allQueries();
+		
 
 		log.info("----inside4");
+		
+		
 
 		message = "\tHello World!\n" + "\tThis is instance: "
 				+ settings.getSlingId() + "\n" + "\tResource type is: "
 				+ resourceType + "\n" + "\tNodePath type is: " + nodePath
 				+ "\n" + "\tCurrent page isss: "
-				+ (currentPage != null ? currentPage.getPath() : "") + " "
-				+ myQuery.allQueries();
+				+ (currentPage != null ? currentPage.getPath() : "") + "\n";
+				
 	}
 }

@@ -13,7 +13,7 @@ import org.apache.sling.servlets.annotations.SlingServletResourceTypes;
 import org.osgi.service.component.annotations.Component;
 
 @Component(service = Servlet.class)
-@SlingServletResourceTypes(resourceTypes = "jk/components/content/mytestmodel", extensions = { "txt" })
+@SlingServletResourceTypes(resourceTypes = "jk/components/content/slingModel", extensions = { "txt" })
 public class MyDemoServlet extends SlingSafeMethodsServlet {
 	private static final long serialVersionUID = 1L;
 
