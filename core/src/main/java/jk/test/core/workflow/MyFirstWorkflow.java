@@ -4,6 +4,9 @@ import javax.jcr.Node;
 import javax.jcr.Session;
 
 import org.osgi.service.component.annotations.Component;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.day.cq.workflow.WorkflowException;
 import com.day.cq.workflow.WorkflowSession;
 import com.day.cq.workflow.exec.WorkItem;
@@ -17,12 +20,15 @@ public class MyFirstWorkflow implements WorkflowProcess {
 	public final void execute(WorkItem workItem,
 			WorkflowSession workflowSession, MetaDataMap args)
 			throws WorkflowException {
-
+		final Logger log = LoggerFactory.getLogger(this.getClass());
 		try {
 
 			String payloadPath = workItem.getWorkflowData().getPayload()
 					.toString()
 					+ "/jcr:content";
+			
+			String myId = "helloji";
+			workItem.getWorkflowData().getMetaDataMap().put("My Id", myId);
 
 			// get session to get node.
 			Session session = workflowSession.getSession();
@@ -37,7 +43,7 @@ public class MyFirstWorkflow implements WorkflowProcess {
 			Node kaka = payloadNode.addNode("KBC", "nt:unstructured");
 
 			kaka.setProperty("love", "crap");
-
+			log.info("Inside of this@@@@@++++1");
 			session.save();
 
 		} catch (Exception e) {
