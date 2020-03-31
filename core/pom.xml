@@ -67,6 +67,7 @@
                         <Sling-Model-Packages>
                             jk.test.core
                         </Sling-Model-Packages>
+                        <Bundle-Activator>jk.test.core.Activator</Bundle-Activator>
                         <_dsannotations>*</_dsannotations>
                         <_metatypeannotations>*</_metatypeannotations>
                         <_plugin>
