@@ -53,7 +53,7 @@
                         <configuration>
                             <supportIncrementalBuild>true</supportIncrementalBuild>
                         </configuration>
-                    </execution>
+                    </execution> 
                 </executions>
                 <configuration>
                     <exportScr>true</exportScr>
@@ -104,18 +104,12 @@
    <artifactId>com.day.commons.osgi.wrapper.commons-httpclient</artifactId>
   </dependency>
     
-    <dependency>
-           <groupId>javax.jcr</groupId>
-           <artifactId>jcr</artifactId>
-   </dependency>  
+      
      <dependency>
            <groupId>org.apache.jackrabbit</groupId>
            <artifactId>jackrabbit-jcr2dav</artifactId>
       </dependency> 
-     <dependency>
-           <groupId>org.slf4j</groupId>
-           <artifactId>slf4j-api</artifactId>
-       </dependency>
+    
         <!-- OSGi Dependencies -->
     
         <dependency>

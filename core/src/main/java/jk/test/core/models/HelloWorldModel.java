@@ -89,9 +89,11 @@ public class HelloWorldModel {
 		Page currentPage = pageManager.getContainingPage(currentResource);
 		Node node = currentResource.adaptTo(Node.class);
 		String nodePath = node.getPath().toString();
+		log.info("nodePath name is ---------"+ nodePath.toString());
+		log.info("currentResource name is ____________"+ currentResource.getPath().toString());
 		log.info("----inside2");
 		myServ.updateMynode(currentResource);
-		log.info("----inside3");
+		
 		myQuery.allQueries();
 		
 
