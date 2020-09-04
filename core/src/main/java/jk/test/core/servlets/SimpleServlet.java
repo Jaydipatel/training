@@ -39,7 +39,9 @@ import java.io.IOException;
 		Constants.SERVICE_DESCRIPTION + "=Simple Demo Servlet",
 		"sling.servlet.methods=" + HttpConstants.METHOD_GET,
 		"sling.servlet.resourceTypes=" + "jk/components/structure/page",
-		"sling.servlet.extensions=" + "pdf" })
+//		"sling.servlet.selectors=" + "txt",
+        "sling.servlet.extensions=" + "pdf",
+"sling.servlet.methods=" + "GET" })
 public class SimpleServlet extends SlingSafeMethodsServlet {
 
 	private static final long serialVersionUID = 1L;
@@ -49,7 +51,7 @@ public class SimpleServlet extends SlingSafeMethodsServlet {
 			final SlingHttpServletResponse resp) throws ServletException,
 			IOException {
 		final Resource resource = req.getResource();
-		resp.setContentType("html/pdf");
+//		resp.setContentType("Application/pdf");
 		resp.getWriter().write(
 				"Title = " + resource.getValueMap().get(JcrConstants.JCR_TITLE)
 						+ " hello****PDF extensions.");

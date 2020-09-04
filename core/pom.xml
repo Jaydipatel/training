@@ -99,10 +99,10 @@
     </build>
 
     <dependencies>
-    <dependency>
+<!--     <dependency>
    <groupId>com.day.commons.osgi.wrapper</groupId>
    <artifactId>com.day.commons.osgi.wrapper.commons-httpclient</artifactId>
-  </dependency>
+  </dependency> -->
     
       
      <dependency>
