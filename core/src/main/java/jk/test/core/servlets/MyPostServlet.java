@@ -44,10 +44,9 @@ public class MyPostServlet extends SlingSafeMethodsServlet {
 
         try {
             String id = UUID.randomUUID().toString();
-            String firstName = request.getParameter("firstName")
-                    + " _newFirstName";
-            String lastName = request.getParameter("lastName")
-                    + " _newLastName";
+            String firstName =  new StringBuilder(request.getParameter("firstName")).reverse().toString();
+            String lastName = new StringBuilder(request.getParameter("lastName")).reverse().toString();
+
 
             // Encode the submitted form data to JSON
             JSONObject obj = new JSONObject();

@@ -1,61 +1,65 @@
 <body>
 
-    <h2 class="ajaxcall">This is a demo of how Ajaxcall work in aem servlet.</h2>
-    <h2>HTML Forms</h2>
+<h2 class="ajaxcall">This is a demo of how Ajaxcall work in aem servlet. Please Enter values and on submission you will
+    get reverse string of those values.</h2>
+<h2>HTML Forms</h2>
 
-    <form>
-        First name:<br>
-        <input id="FirstName" type="text" name="firstname" value="oldName">
-        <br>
-        Last name:<br>
-        <input id="LastName" type="text" name="lastname" value="oldLast">
-        <br><br>
-        <input type="button" value="Submit" name="submit" id="submit">
-    </form>
+<form>
+    First name:<br>
+    <input id="FirstName" type="text" name="firstname" value="First">
+    <br>
+    Last name:<br>
+    <input id="LastName" type="text" name="lastname" value="Last">
+    <br><br>
+    <input type="button" value="Submit" name="submit" id="submit">
+</form>
 
-    <h2 style="color:red">AJAX call to servlet,,, On hitting submit button it should give you alert message with success and will update form values with new ones.</h2>
-    <script>
-        function createUUID() {
+<h2 style="color:red">AJAX call to servlet,,, On hitting submit button it should give you alert message with success and
+    will update form values with new ones.</h2>
+<script>
+    function createUUID() {
 
-            var s = [];
-            var hexDigits = "0123456789abcdef";
-            for (var i = 0; i < 36; i++) {
-                s[i] = hexDigits.substr(Math.floor(Math.random() * 0x10), 1);
-            }
-            s[14] = "4"; // bits 12-15 of the time_hi_and_version field to 0010
-            s[19] = hexDigits.substr((s[19] & 0x3) | 0x8, 1); // bits 6-7 of the clock_seq_hi_and_reserved to 01
-            s[8] = s[13] = s[18] = s[23] = "-";
-
-            var uuid = s.join("");
-            return uuid;
+        var s = [];
+        var hexDigits = "0123456789abcdef";
+        for (var i = 0; i < 36; i++) {
+            s[i] = hexDigits.substr(Math.floor(Math.random() * 0x10), 1);
         }
-        $(document).ready(function() {
+        s[14] = "4"; // bits 12-15 of the time_hi_and_version field to 0010
+        s[19] = hexDigits.substr((s[19] & 0x3) | 0x8, 1); // bits 6-7 of the clock_seq_hi_and_reserved to 01
+        s[8] = s[13] = s[18] = s[23] = "-";
 
-            $('#submit').click(function() {
-                var myFirst = $('#FirstName').val();
-                var myLast = $('#LastName').val();
-                var claimId = createUUID();
-                $.ajax({
-                    type: "GET",
-                    url: '/bin/submitdata',
-                    data: 'firstName=' + myFirst + '&lastName=' + myLast,
-                    success: function(data, textStatus, jqXHR) {
-                        // getting response
-                        alert("Status of response ---->" + textStatus);
-                        var json = JSON.parse(JSON.stringify(data));
-                        var lastName = json.lastname;
-                        var firstName = json.firstname;
-                        alert("hello there " + lastName + " " + firstName);
-                        $('#FirstName').val(firstName);
-                        $('#LastName').val(lastName);
-                    },
-                    error: function(XMLHttpRequest, textStatus, errorThrown) {
-                        //write your logic that you need to perform on error
-                    }
-                })
+        var uuid = s.join("");
+        return uuid;
+    }
+
+    $(document).ready(function () {
+
+        $('#submit').click(function () {
+            var myFirst = $('#FirstName').val();
+            var myLast = $('#LastName').val();
+            // var claimId = createUUID();
+            $.ajax({
+                type: "GET",
+                url: '/bin/submitdata',
+                data: 'firstName=' + myFirst + '&lastName=' + myLast,
+                success: function (data, textStatus, jqXHR) {
+                    // getting response
+                    // alert("Status of response ---->" + textStatus );
+                    //
+                    var json = JSON.parse(JSON.stringify(data));
+                    var lastName = json.lastname;
+                    var firstName = json.firstname;
+                    // alert("hello there " + lastName + " " + firstName);
+                    $('#FirstName').val(firstName);
+                    $('#LastName').val(lastName);
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    //write your logic that you need to perform on error
+                }
             })
-        });
+        })
+    });
 
-    </script>
+</script>
 
 </body>
