@@ -9,10 +9,10 @@
                 <responsivegrid jcr:primaryType="nt:unstructured">
                     <content-default
                         jcr:description="Policy for editable layout containers"
-                        jcr:lastModified="{Date}2019-09-20T21:22:48.661-05:00"
+                        jcr:lastModified="{Date}2023-05-03T19:37:12.658-07:00"
                         jcr:lastModifiedBy="admin"
                         jcr:primaryType="nt:unstructured"
-                        jcr:title="jk Default"
+                        jcr:title="Information Page Policy"
                         sling:resourceType="wcm/core/components/policy/policy"
                         components="[group:jk,/apps/jk/components/form/container]"
                         policyResourceType="wcm/foundation/components/responsivegrid">

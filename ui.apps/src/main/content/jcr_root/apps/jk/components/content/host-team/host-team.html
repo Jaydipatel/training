@@ -1,0 +1,9 @@
+<sly data-sly-list.hostTeamEnv="${resource.getChildren}">
+
+    <sly data-sly-test="${hostTeamEnv.name == 'hostTeamEnv'}">
+        <sly data-sly-list.env="${hostTeamEnv.getChildren}">
+            <label>${env.hostEnvOptions}:</label>
+            <span>${env.hostEnv}</span>
+        </sly>
+    </sly>
+</sly>

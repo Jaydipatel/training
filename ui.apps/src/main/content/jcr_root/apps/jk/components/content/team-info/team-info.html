@@ -1,0 +1,12 @@
+<div class=" ${properties.isEditable && wcmmode.edit ? 'product-row-test' : 'product-row'}">
+    <div>${properties.hostName}</div>
+    <div>${properties.carID}</div>
+    <div>${properties.techLead}</div>
+</div>
+<div class="product-details ${properties.isEditable && wcmmode.edit ? '' : 'hidden'}">
+    <sly data-sly-resource="${'host-team' @ resourceType='jk/components/content/host-team'}"/>
+</div>
+
+
+
+
