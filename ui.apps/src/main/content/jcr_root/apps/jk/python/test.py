@@ -20,7 +20,7 @@ for row in ws.iter_rows(min_row=2, values_only=True):
 
     # Create the element
     elem = ET.Element(name)
-    elem.set('jcr:primaryType', primary_type)
+    elem.set('jcr:primaryType', 'nt:unstructured')
     elem.set('sling:resourceType',
     'granite/ui/components/coral/foundation/form/textfield' if resource_type == 'plain text'
     else 'dam/cfm/admin/components/authoring/contenteditor/multieditor' if resource_type == 'RTE'
